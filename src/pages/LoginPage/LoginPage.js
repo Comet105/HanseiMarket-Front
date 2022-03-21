@@ -5,16 +5,12 @@ import { login } from "../../store/actions/UserAction";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
-import Cookies from "universal-cookie";
 
 const LoginPage = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const cookies = new Cookies();
-
-  cookies.get("cookies");
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -26,8 +22,8 @@ const LoginPage = (props) => {
 
     dispatch(login(body))
       .then((request) => {
-        console.log(request);
-        console.log(cookies);
+        console.log(request.cookie);
+        console.log(request.cookies);
         if (request.payload.loginSuccess) {
           alert("로그인에 성공하셨습니다.");
           navigate("/");
