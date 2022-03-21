@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import LogoSVG from "../assets/svg/MainLogo.svg";
@@ -7,7 +7,7 @@ import { logout } from "../store/actions/UserAction";
 
 const Header = () => {
   const [search, setSearch] = useState("");
-  // const [lgout, setLgOut] = useState(Boolean);
+  const [lgout, setLgOut] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -17,14 +17,13 @@ const Header = () => {
         console.log(res.payload.logoutSuccess);
         if (res.payload.logoutSuccess) {
           navigate("/login");
+          setLgOut(!lgout);
         } else {
           alert("로그아웃에 실패하였습니다.");
         }
       })
       .catch((err) => console.log(err));
   };
-
-  const user = useSelector((state) => state.User);
 
   return (
     <HeaderBar>
@@ -42,7 +41,7 @@ const Header = () => {
       <ProfileWrapper>
         <Profile>나야 나!</Profile>
 
-        {user && user.logoutSuccess ? (
+        {lgout ? (
           <Logout onClick={onClickHandler}>로그아웃</Logout>
         ) : (
           <Link to="/login">

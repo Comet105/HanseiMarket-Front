@@ -1,29 +1,12 @@
-import { Cookies } from "react-cookie";
+import Cookies from "universal-cookie";
 
-const cookies = new Cookies();
+const Cookie = () => {
+  const cookies = new Cookies();
 
-export const setCookie = (name, value, option) => {
-  return cookies.set(name, value, { ...option });
+  cookies.set("cookie", "dmddo", {
+    path: "/",
+    expires: Math.floor(Date.now() / 1000) + 60 * 60,
+  });
 };
 
-export const getCookie = (name) => {
-  return cookies.get(name);
-};
-
-// const jwtToken = await signIn(signInPayload);
-// if (jwtToken) {
-//   setCookie("myToken", token, {
-//     path: "/",
-//     secure: true,
-//     sameSite: "none",
-//   });
-// }
-
-// await axios({
-//   method: "get",
-//   url: "api.example.com/auth/currentUser",
-//   headers: {
-//     "Content-Type": "application/json",
-//     Authorization: `Bearer ${getCookie("myToken")}`,
-//   },
-// });
+export default Cookie;

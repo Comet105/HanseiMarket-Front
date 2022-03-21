@@ -5,13 +5,16 @@ import { login } from "../../store/actions/UserAction";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
-import { request } from "../../utils/axios";
+import Cookies from "universal-cookie";
 
 const LoginPage = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const cookies = new Cookies();
+
+  cookies.get("cookies");
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -22,10 +25,14 @@ const LoginPage = (props) => {
     };
 
     dispatch(login(body))
-      .then((res) => {
-        console.log(request.cookie);
-        if (res.payload.loginSuccess) {
+      .then((request, response) => {
+        console.log(request);
+        console.log(cookies);
+        const { accessToken } = response.data;
+        response.addCookie(cookies);
+        if (request.payload.loginSuccess) {
           alert("로그인에 성공하셨습니다.");
+          console.log(accessToken);
           navigate("/");
         } else {
           alert("로그인에 실패하셨습니다.");
