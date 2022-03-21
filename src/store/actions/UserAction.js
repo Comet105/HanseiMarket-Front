@@ -1,0 +1,28 @@
+import { REGISTER_USER, LOGIN_USER, LOGOUT_USER } from "./types";
+import { request } from "../../utils/axios";
+
+export const register = (dataToSubmit) => {
+  const data = request("post", "/auth/signup", dataToSubmit);
+  return {
+    type: REGISTER_USER,
+    payload: data,
+  };
+};
+
+export const login = (dataToSubmit) => {
+  const data = request("post", "/auth/signin", dataToSubmit, {
+    withCredentials: true,
+  });
+  return {
+    type: LOGIN_USER,
+    payload: data,
+  };
+};
+
+export const logout = () => {
+  const data = request("post", "/auth/logout");
+  return {
+    type: LOGOUT_USER,
+    payload: data,
+  };
+};
