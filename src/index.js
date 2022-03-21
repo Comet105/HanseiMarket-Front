@@ -9,7 +9,7 @@ import reducer from "./store/reducers";
 import { GlobalStyle } from "./GlobalStyle";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://www.istpdeveloper.com";
+axios.defaults.baseURL = "https://istpdeveloper.com";
 axios.defaults.withCredentials = true;
 
 const createStoreWidthMiddleware = applyMiddleware(
