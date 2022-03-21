@@ -14,7 +14,7 @@ export const register = (dataToSubmit) => {
 export const login = (dataToSubmit) => {
   const data = request("post", "/auth/signin", dataToSubmit, {
     withCredentials: true,
-  });
+  }).then((response) => response.data);
   return {
     type: LOGIN_USER,
     payload: data,

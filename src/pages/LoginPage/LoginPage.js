@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { login } from "../../store/actions/UserAction";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
-import { getCookie } from "../../components/Cookies";
+import { useCookies } from "react-cookie";
 
 const LoginPage = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [cookies, setCookie, removeCookie] = useCookies(["accessToken"]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(cookies);
+  }, []);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -26,9 +31,8 @@ const LoginPage = (props) => {
       .then((res) => {
         if (res.payload.loginSuccess) {
           alert("로그인에 성공하셨습니다.");
-          getCookie(res.cookies);
           console.log(res.cookies);
-          console.log(res.accessToken);
+          console.log(res);
           navigate("/");
         } else {
           alert("로그인에 실패하셨습니다.");

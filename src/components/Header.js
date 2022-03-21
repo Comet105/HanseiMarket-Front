@@ -7,17 +7,15 @@ import { logout } from "../store/actions/UserAction";
 
 const Header = () => {
   const [search, setSearch] = useState("");
-  const [lgout, setLgOut] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onClickHandler = () => {
     dispatch(logout())
       .then((res) => {
-        console.log(res.payload.logoutSuccess);
+        console.log(res);
         if (res.payload.logoutSuccess) {
           navigate("/login");
-          setLgOut(!lgout);
         } else {
           alert("로그아웃에 실패하였습니다.");
         }
@@ -41,13 +39,11 @@ const Header = () => {
       <ProfileWrapper>
         <Profile>나야 나!</Profile>
 
-        {lgout ? (
-          <Logout onClick={onClickHandler}>로그아웃</Logout>
-        ) : (
-          <Link to="/login">
-            <SignIn onClick={onClickHandler}>로그인</SignIn>
-          </Link>
-        )}
+        <Logout onClick={onClickHandler}>로그아웃</Logout>
+
+        <Link to="/login">
+          <SignIn>로그인</SignIn>
+        </Link>
       </ProfileWrapper>
     </HeaderBar>
   );
