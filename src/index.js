@@ -8,6 +8,7 @@ import reduxThunk from "redux-thunk";
 import reducer from "./store/reducers";
 import { GlobalStyle } from "./GlobalStyle";
 import axios from "axios";
+import { CookiesProvider } from "react-cookie";
 
 axios.defaults.withCredentials = true;
 
@@ -26,7 +27,9 @@ ReactDOM.render(
       )}
     >
       <GlobalStyle />
-      <App />
+      <CookiesProvider>
+        <App />
+      </CookiesProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
