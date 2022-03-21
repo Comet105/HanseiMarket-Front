@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
 import { useCookies } from "react-cookie";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginPage = (props) => {
   const [email, setEmail] = useState("");
@@ -30,12 +32,12 @@ const LoginPage = (props) => {
     dispatch(login(body))
       .then((res) => {
         if (res.payload.loginSuccess) {
-          alert("로그인에 성공하셨습니다.");
+          toast("로그인에 성공하셨습니다.");
           console.log(res.cookies);
           console.log(res);
           navigate("/");
         } else {
-          alert("로그인에 실패하셨습니다.");
+          toast("로그인에 실패하셨습니다.");
         }
       })
       .catch((err) => {

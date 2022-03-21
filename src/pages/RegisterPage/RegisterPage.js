@@ -4,6 +4,8 @@ import { register } from "../../store/actions/UserAction";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const RegisterPage = (props) => {
   const [email, setEmail] = useState("");
@@ -33,10 +35,10 @@ const RegisterPage = (props) => {
         .then((res) => {
           console.log(res);
           if (res.payload.registerSuccess) {
-            alert("가입이 정상적으로 완료되었습니다.");
+            toast("가입이 정상적으로 완료되었습니다.");
             navigate("/login");
           } else {
-            alert("가입실패");
+            toast("가입실패");
             console.log(res.error.message);
           }
         })
@@ -44,7 +46,7 @@ const RegisterPage = (props) => {
           console.log(err);
         });
     } else {
-      alert("비밀번호가 일치하지 않습니다.");
+      toast("비밀번호가 일치하지 않습니다.");
     }
   };
 

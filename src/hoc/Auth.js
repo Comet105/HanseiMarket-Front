@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import { login } from "../store/actions/UserAction";
+import { auth } from "../store/actions/UserAction";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function (Component, option, adminRoute = null) {
@@ -9,9 +9,9 @@ export default function (Component, option, adminRoute = null) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     useEffect(() => {
-      dispatch(login()).then((res) => {
+      dispatch(auth()).then((res) => {
         console.log(res);
-        if (!res.payload.loginSuccess) {
+        if (!res.payload.authSuccess) {
           if (option) {
             navigate("/login");
           }
