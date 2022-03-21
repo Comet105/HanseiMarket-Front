@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const DOMAIN = "https://istpdeveloper.com";
-// axios.post("https://www.istpdeveloper.com", { withCredentials: true }); //for GET
 
 export const request = (method, url, data) => {
   axios.defaults.withCredentials = true;
