@@ -21,11 +21,11 @@ const LoginPage = (props) => {
     };
 
     dispatch(login(body))
-      .then((request) => {
-        console.log(request.cookie);
-        console.log(request.cookies);
-        if (request.payload.loginSuccess) {
+      .then((res) => {
+        if (res.payload.loginSuccess) {
           alert("로그인에 성공하셨습니다.");
+          console.log(res.cookie);
+          console.log(res.cookies);
           navigate("/");
         } else {
           alert("로그인에 실패하셨습니다.");
