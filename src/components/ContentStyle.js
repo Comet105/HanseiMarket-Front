@@ -1,17 +1,31 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Img from "../assets/png/test.png";
 
 const ContentStyle = () => {
   return (
-    <ContentsWrapper>
-      <ContentsImg src={Img} />
-      <ContentsExplanation>삼성 공기청정기</ContentsExplanation>
-      <Money>30,000원</Money>
-      <div>해킹보안과 2반</div>
-    </ContentsWrapper>
+    <IsLink to="/detail">
+      <ContentsWrapper>
+        <ContentsImg src={Img} />
+        <ContentsExplanation>삼성 공기청정기</ContentsExplanation>
+        <Money>30,000원</Money>
+        <div>해킹보안과 2반</div>
+      </ContentsWrapper>
+    </IsLink>
   );
 };
+
+const IsLink = styled(Link)`
+  :visited {
+    color: black;
+    text-decoration: none;
+  }
+  :hover {
+    color: black;
+    text-decoration: underline;
+  }
+`;
 
 const ContentsWrapper = styled.div`
   display: flex;

@@ -4,6 +4,7 @@ import LoginPage from "../pages/LoginPage/LoginPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import RodingPage from "../pages/RodingPage/RodingPage";
 import MainPage from "../pages/MainPage/MainPage";
+import DetailPage from "../pages/DetailPage/DetailPage";
 import Auth from "../hoc/Auth";
 
 const AppRouter = () => {
@@ -17,6 +18,7 @@ const AppRouter = () => {
         <Route path="/list" element={<AuthRodingPage />} />
         <Route path="/login" element={<AuthLoginPage />} />
         <Route path="/register" element={<AuthRegisterPage />} />
+        <Route path="/detail" element={<DetailPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -5,20 +5,18 @@ import { login } from "../../store/actions/UserAction";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
-import { useCookies } from "react-cookie";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const LoginPage = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [cookies, setCookie, removeCookie] = useCookies(["accessToken"]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(cookies);
+    console.log(document.cookies);
   }, []);
 
   const onSubmitHandler = (e) => {
