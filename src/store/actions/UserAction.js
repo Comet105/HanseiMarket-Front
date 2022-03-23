@@ -32,7 +32,7 @@ export const logout = () => {
 };
 
 export const auth = () => {
-  const data = request("post", "/auth/auth", {
+  const data = request("get", "/auth/auth", {
     withCredentials: true,
   });
   return {

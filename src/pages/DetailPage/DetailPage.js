@@ -14,6 +14,7 @@ const DetailPage = () => {
           <div style={{ padding: "0rem 6rem 0rem 6rem" }}>
             <DetailProfile />
             <Hr />
+            사랑해요 엄준식 좋아해요 엄준식
           </div>
         </InnerBox>
       </ContentsWrapper>

@@ -26,8 +26,6 @@ const LoginPage = (props) => {
 
     dispatch(login(body))
       .then((res) => {
-        console.log(res);
-        console.log(res.payload.user.id);
         if (res.payload.loginSuccess) {
           toast("로그인에 성공하셨습니다.");
           setUserId(res.user.id);

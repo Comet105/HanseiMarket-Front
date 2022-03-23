@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../../components/Header";
 import Img from "../../assets/png/test2.png";
+import axios from "axios";
+import { request } from "../../utils/axios";
 
 const MainPage = () => {
+  const test = () => {
+    const data = request("get", "/auth/auth", {
+      withCredentials: true,
+    });
+
+    console.log(data);
+  };
   return (
     <>
       <Header />
@@ -20,9 +29,11 @@ const MainPage = () => {
               학교 학생들이 올리는 중고 물품을 확인해보세요!
             </Banner>
 
-            <Link to="list">
-              <MoveListButton>학생들이 올린 중고물품 구경하기</MoveListButton>
-            </Link>
+            {/* <Link to="list"> */}
+            <MoveListButton onClick={() => test()}>
+              학생들이 올린 중고물품 구경하기
+            </MoveListButton>
+            {/* </Link> */}
           </TitleWrapper>
           <ContentsWrapper>
             <ContentsImg src={Img} />
