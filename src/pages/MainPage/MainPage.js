@@ -5,14 +5,13 @@ import Header from "../../components/Header";
 import Img from "../../assets/png/test2.png";
 import axios from "axios";
 import { request } from "../../utils/axios";
+import { useDispatch } from "react-redux";
+import { auth } from "../../store/actions/UserAction";
 
 const MainPage = () => {
+  const dispatch = useDispatch();
   const test = () => {
-    const data = request("get", "/auth/auth", {
-      withCredentials: true,
-    });
-
-    console.log(data);
+    dispatch(auth());
   };
   return (
     <>

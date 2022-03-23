@@ -11,7 +11,6 @@ import "react-toastify/dist/ReactToastify.css";
 const LoginPage = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userId, setUserId] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,7 +27,6 @@ const LoginPage = (props) => {
       .then((res) => {
         if (res.payload.loginSuccess) {
           toast("로그인에 성공하셨습니다.");
-          setUserId(res.user.id);
           navigate("/");
         } else {
           toast("로그인에 실패하셨습니다.");
@@ -41,7 +39,7 @@ const LoginPage = (props) => {
 
   return (
     <>
-      <Header userId={userId} />
+      <Header />
       <LoginWrapper>
         <ContentWrapper>
           <TitleWrapper>

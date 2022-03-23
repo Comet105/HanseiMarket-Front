@@ -26,7 +26,7 @@ const Header = (userId) => {
 
   return (
     <HeaderBar>
-      <HeaderForm>
+      <HeaderWrapper>
         <Link to="/">
           <Img src={LogoSVG} />
         </Link>
@@ -36,7 +36,7 @@ const Header = (userId) => {
           placeholder="검색어를 입력해주세요..."
           onChange={(e) => setSearch(e.currentTarget.value)}
         />
-      </HeaderForm>
+      </HeaderWrapper>
       <ProfileWrapper>
         <Profile>나야 나!</Profile>
 
@@ -59,7 +59,7 @@ const HeaderBar = styled.header`
   box-shadow: 2px 2px 12px 5px #f0f0f0;
 `;
 
-const HeaderForm = styled.form`
+const HeaderWrapper = styled.div`
   display: flex;
 `;
 
