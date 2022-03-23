@@ -19,7 +19,7 @@ const DetailExamine = () => {
 };
 
 const ContentsImg = styled.img`
-  width: 30rem;
+  width: 100%;
   height: 20rem;
   border-radius: 7px;
 `;

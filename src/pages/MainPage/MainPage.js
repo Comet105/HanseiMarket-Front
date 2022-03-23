@@ -11,7 +11,9 @@ import { auth } from "../../store/actions/UserAction";
 const MainPage = () => {
   const dispatch = useDispatch();
   const test = () => {
-    dispatch(auth());
+    dispatch(auth()).then((res) => {
+      console.log(res);
+    });
   };
   return (
     <>

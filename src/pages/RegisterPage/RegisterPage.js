@@ -30,6 +30,7 @@ const RegisterPage = (props) => {
       department: department,
       studentId: studentId,
     };
+
     if (password === confirmPasword) {
       dispatch(register(body))
         .then((res) => {
