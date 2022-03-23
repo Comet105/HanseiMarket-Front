@@ -8,17 +8,18 @@ export default function (Component, option, adminRoute = null) {
   const AuthCheck = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     useEffect(() => {
       dispatch(auth()).then((res) => {
         console.log(res);
-        if (!res.payload.authSuccess) {
-          if (option) {
-            navigate("/login");
-          }
-        } else {
-          navigate("/");
-        }
-        console.log("HOC 테스트");
+        // if (!res.payload.authSuccess) {
+        //   if (option) {
+        //     navigate("/login");
+        //   }
+        // } else {
+        //   navigate("/");
+        // }
+        // console.log("HOC 테스트");
       });
     }, []);
 

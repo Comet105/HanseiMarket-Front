@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { login } from "../../store/actions/UserAction";
@@ -11,13 +11,10 @@ import "react-toastify/dist/ReactToastify.css";
 const LoginPage = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userId, setUserId] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(document.cookies);
-  }, []);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -29,10 +26,11 @@ const LoginPage = (props) => {
 
     dispatch(login(body))
       .then((res) => {
+        console.log(res);
+        console.log(res.payload.user.id);
         if (res.payload.loginSuccess) {
           toast("로그인에 성공하셨습니다.");
-          console.log(res.cookies);
-          console.log(res);
+          setUserId(res.user.id);
           navigate("/");
         } else {
           toast("로그인에 실패하셨습니다.");
@@ -45,7 +43,7 @@ const LoginPage = (props) => {
 
   return (
     <>
-      <Header />
+      <Header userId={userId} />
       <LoginWrapper>
         <ContentWrapper>
           <TitleWrapper>

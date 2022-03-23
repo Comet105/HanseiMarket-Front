@@ -5,8 +5,9 @@ import styled from "styled-components";
 import LogoSVG from "../assets/svg/MainLogo.svg";
 import { logout } from "../store/actions/UserAction";
 
-const Header = () => {
+const Header = (userId) => {
   const [search, setSearch] = useState("");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -39,11 +40,11 @@ const Header = () => {
       <ProfileWrapper>
         <Profile>나야 나!</Profile>
 
-        <Logout onClick={onClickHandler}>로그아웃</Logout>
-
         <Link to="/login">
           <SignIn>로그인</SignIn>
         </Link>
+
+        <Logout onClick={onClickHandler}>로그아웃</Logout>
       </ProfileWrapper>
     </HeaderBar>
   );
