@@ -34,7 +34,6 @@ const RegisterPage = (props) => {
     if (password === confirmPasword) {
       dispatch(register(body))
         .then((res) => {
-          console.log(res);
           if (res.payload.registerSuccess) {
             toast("가입이 정상적으로 완료되었습니다.");
             navigate("/login");
@@ -190,6 +189,10 @@ const Department = styled.select`
   text-align-last: center;
   color: gray;
   border-radius: 6px;
+
+  :focus {
+    outline: 1px solid gray;
+  }
 `;
 
 const DepartmentInput = styled.input`
@@ -203,6 +206,9 @@ const DepartmentInput = styled.input`
 
   ::placeholder {
     color: #9f9f9f;
+  }
+  :focus {
+    outline: 1px solid gray;
   }
 `;
 

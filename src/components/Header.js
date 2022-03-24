@@ -1,15 +1,24 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import LogoSVG from "../assets/svg/MainLogo.svg";
-import { logout } from "../store/actions/UserAction";
+import { auth, logout } from "../store/actions/UserAction";
 
 const Header = (userId) => {
   const [search, setSearch] = useState("");
+  const [lgout, setLgout] = useState();
+  const [nickname, setNickName] = useState();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(auth()).then((res) => {
+      setLgout(res.payload);
+      setNickName(res.payload.nickname);
+    });
+  }, []);
 
   const onClickHandler = () => {
     dispatch(logout())
@@ -38,13 +47,24 @@ const Header = (userId) => {
         />
       </HeaderWrapper>
       <ProfileWrapper>
-        <Profile>나야 나!</Profile>
+        {nickname ? (
+          <Profile>
+            <p>
+              <strong>{nickname}</strong>
+            </p>
+            <div style={{ fontSize: "14px", paddingTop: "3px" }}>님</div>
+          </Profile>
+        ) : (
+          ""
+        )}
 
-        <Link to="/login">
-          <SignIn>로그인</SignIn>
-        </Link>
-
-        <Logout onClick={onClickHandler}>로그아웃</Logout>
+        {lgout ? (
+          <Logout onClick={onClickHandler}>로그아웃</Logout>
+        ) : (
+          <Link to="/login">
+            <SignIn>로그인</SignIn>
+          </Link>
+        )}
       </ProfileWrapper>
     </HeaderBar>
   );
@@ -53,6 +73,7 @@ const Header = (userId) => {
 const HeaderBar = styled.header`
   display: flex;
   justify-content: space-around;
+  align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
   width: 100%;
@@ -61,6 +82,7 @@ const HeaderBar = styled.header`
 
 const HeaderWrapper = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 const Img = styled.img``;
@@ -81,10 +103,12 @@ const Search = styled.input`
 
 const ProfileWrapper = styled.div`
   display: flex;
-  padding-top: 10px;
 `;
 
-const Profile = styled.div``;
+const Profile = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 const SignIn = styled.button`
   border: 0;
@@ -98,6 +122,16 @@ const SignIn = styled.button`
   }
 `;
 
-const Logout = styled.button``;
+const Logout = styled.button`
+  border: 0;
+  background-color: transparent;
+  margin-left: 1rem;
+
+  cursor: pointer;
+
+  :hover {
+    background-color: #f0f0f0;
+  }
+`;
 
 export default Header;

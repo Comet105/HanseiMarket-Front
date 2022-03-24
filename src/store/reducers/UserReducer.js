@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import {
   LOGIN_USER,
   LOGOUT_USER,
@@ -5,7 +6,7 @@ import {
   AUTH_USER,
 } from "../actions/types";
 
-export default function reducer(state = {}, action) {
+export default function (state = {}, action) {
   switch (action.type) {
     case LOGIN_USER:
       return { ...state, loginSuccess: action.payload };

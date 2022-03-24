@@ -1,20 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../../components/Header";
 import Img from "../../assets/png/test2.png";
-import axios from "axios";
-import { request } from "../../utils/axios";
+
 import { useDispatch } from "react-redux";
-import { auth } from "../../store/actions/UserAction";
 
 const MainPage = () => {
   const dispatch = useDispatch();
-  const test = () => {
-    dispatch(auth()).then((res) => {
-      console.log(res);
-    });
-  };
+
   return (
     <>
       <Header />
@@ -30,11 +24,9 @@ const MainPage = () => {
               학교 학생들이 올리는 중고 물품을 확인해보세요!
             </Banner>
 
-            {/* <Link to="list"> */}
-            <MoveListButton onClick={() => test()}>
-              학생들이 올린 중고물품 구경하기
-            </MoveListButton>
-            {/* </Link> */}
+            <Link to="list">
+              <MoveListButton>학생들이 올린 중고물품 구경하기</MoveListButton>
+            </Link>
           </TitleWrapper>
           <ContentsWrapper>
             <ContentsImg src={Img} />

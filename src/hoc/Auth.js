@@ -11,17 +11,17 @@ export default function (Component, option, adminRoute = null) {
 
     useEffect(() => {
       dispatch(auth()).then((res) => {
-        console.log(res);
-        // if (!res.payload.authSuccess) {
-        //   if (option) {
-        //     navigate("/login");
-        //   }
-        // } else {
-        //   navigate("/");
-        // }
-        // console.log("HOC 테스트");
+        if (!res.payload) {
+          if (option) {
+            navigate("/login");
+          }
+        } else {
+          if (option === false) {
+            navigate("/");
+          }
+        }
       });
-    }, []);
+    }, [dispatch, navigate]);
 
     return <Component />;
   };
