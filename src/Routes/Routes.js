@@ -11,9 +11,9 @@ import AddDetailPage from "../pages/DetailPage/AddDetailPage/AddDetailPage";
 const AppRouter = () => {
   const AuthMainPage = Auth(MainPage, null);
   const AuthRodingPage = Auth(RodingPage, null);
-  const AuthLoginPage = Auth(LoginPage, true);
-  const AuthRegisterPage = Auth(RegisterPage, true);
-  const AuthDetailPage = Auth(DetailPage, true);
+  const AuthLoginPage = Auth(LoginPage, false);
+  const AuthRegisterPage = Auth(RegisterPage, null);
+  const AuthDetailPage = Auth(DetailPage, false);
   const AuthAddDetailPage = Auth(AddDetailPage, true);
 
   return (

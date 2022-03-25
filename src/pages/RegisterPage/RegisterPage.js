@@ -14,7 +14,7 @@ const RegisterPage = (props) => {
   const [confirmPasword, setConfirmPasword] = useState("");
   const [nickname, setNickName] = useState("");
   const [studentId, setStudentId] = useState("");
-  const [department, setDepartment] = useState("");
+  const [department, setDepartment] = useState("해킹보안과");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -98,13 +98,13 @@ const RegisterPage = (props) => {
               <Department
                 type="select"
                 value={department}
-                onChange={(e) => setDepartment(e.currentTarget.value)}
+                onChange={(e) => setDepartment(e.target.value)}
               >
-                <option>해킹보안과</option>
-                <option>네트워크보안과</option>
-                <option>메타버스게임과</option>
-                <option>클라우드보안과</option>
-                <option>게임과</option>
+                <option value="해킹보안과">해킹보안과</option>
+                <option value="네트워크보안과">네트워크보안과</option>
+                <option value="메타버스게임과">메타버스게임과</option>
+                <option value="클라우드보안과">클라우드보안과</option>
+                <option value="게임과">게임과</option>
               </Department>
               <DepartmentInput
                 type="text"

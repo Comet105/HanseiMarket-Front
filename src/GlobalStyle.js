@@ -17,5 +17,9 @@ export const GlobalStyle = createGlobalStyle`
   *::after {
     box-sizing: inherit;
   }
+
+  input, button, form {
+    font-family: 'Spoqa Han Sans Neo', sans-serif;
+  }
     a { cursor: pointer; text-decoration: none; }
 `;

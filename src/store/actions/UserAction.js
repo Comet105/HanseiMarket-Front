@@ -1,5 +1,12 @@
-import { REGISTER_USER, LOGIN_USER, LOGOUT_USER, AUTH_USER } from "./types";
+import {
+  REGISTER_USER,
+  LOGIN_USER,
+  LOGOUT_USER,
+  AUTH_USER,
+  ALLPRODUCT,
+} from "./types";
 import { request } from "../../utils/axios";
+import { type } from "@testing-library/user-event/dist/type";
 
 export const register = (dataToSubmit) => {
   const data = request("post", "/auth/signup", dataToSubmit, {
@@ -37,6 +44,16 @@ export const auth = () => {
   });
   return {
     type: AUTH_USER,
+    payload: data,
+  };
+};
+
+export const product = () => {
+  const data = request("get", "/product/all", {
+    withCredentials: true,
+  });
+  return {
+    type: ALLPRODUCT,
     payload: data,
   };
 };
