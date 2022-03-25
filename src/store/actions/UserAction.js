@@ -4,6 +4,7 @@ import {
   LOGOUT_USER,
   AUTH_USER,
   ALLPRODUCT,
+  ADDPRODUCT,
 } from "./types";
 import { request } from "../../utils/axios";
 import { type } from "@testing-library/user-event/dist/type";
@@ -24,6 +25,16 @@ export const login = (dataToSubmit) => {
   });
   return {
     type: LOGIN_USER,
+    payload: data,
+  };
+};
+
+export const addproduct = (dataToSubmit) => {
+  const data = request("post", "/product", dataToSubmit, {
+    withCredentials: true,
+  });
+  return {
+    type: ADDPRODUCT,
     payload: data,
   };
 };

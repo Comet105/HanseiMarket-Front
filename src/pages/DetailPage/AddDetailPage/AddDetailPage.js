@@ -2,17 +2,35 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "../../../components/Header";
 import Img from "../../../assets/png/test5.png";
+import { useDispatch } from "react-redux";
+import { addproduct } from "../../../store/actions/UserAction";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const AddDetailPage = () => {
+const AddDetailPage = (props) => {
   const [productTitle, setProductTitle] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCateGory] = useState("카테고리 선택");
-
-  const onAddPhotoClickHandler = () => {};
+  const dispatch = useDispatch();
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    let body = {
+      title: productTitle,
+      price: price,
+      description: description,
+      category: category,
+    };
+
+    dispatch(addproduct(body)).then((res) => {
+      console.log(res);
+      if (res.payload) {
+        toast("등록 성공");
+      } else {
+        toast("등록 실패");
+      }
+    });
   };
 
   return (
@@ -33,16 +51,21 @@ const AddDetailPage = () => {
               placeholder="글 제목"
             />
 
+            <Hr />
+
             <ProductSelect
-              type="text"
+              type="select"
               value={category}
               onChange={(e) => setCateGory(e.target.value)}
             >
+              <option value="카테고리 선택">카테고리 선택</option>
               <option value="전자제품">전자제품</option>
               <option value="자격증책">자격증책</option>
               <option value="언어공부책">언어공부책</option>
               <option value="기타">기타</option>
             </ProductSelect>
+
+            <Hr />
 
             <ProductInput
               type="text"
@@ -50,12 +73,16 @@ const AddDetailPage = () => {
               onChange={(e) => setPrice(e.currentTarget.value)}
               placeholder="가격"
             />
+
+            <Hr />
             <ProductInput
               type="text"
               value={description}
               onChange={(e) => setDescription(e.currentTarget.value)}
               placeholder="상품설명"
             />
+
+            <AddDetailButton type="submit">등록하기</AddDetailButton>
           </AddDetialForm>
         </Innerbox>
       </AddDetailWrapper>
@@ -84,7 +111,7 @@ const Title = styled.div`
 
 const AddPhotoButton = styled.button`
   border: 0;
-  margin-top: 3rem;
+  margin: 3rem 16rem 2rem 0rem;
   background-color: transparent;
   cursor: pointer;
 `;
@@ -95,9 +122,8 @@ const AddPhoto = styled.img`
 `;
 
 const Hr = styled.div`
-  margin-top: 2rem;
   border: 1px solid silver;
-  width: 100%;
+  width: 25rem;
 `;
 
 const AddDetialForm = styled.form`
@@ -107,13 +133,39 @@ const AddDetialForm = styled.form`
 `;
 
 const ProductInput = styled.input`
+  display: block;
   border: 0;
+  padding: 0.8rem 0rem 0.8rem 0rem;
   margin: 1rem 0rem 1rem 0rem;
+  border-radius: 3px;
+
+  ::placeholder {
+    color: #9f9f9f;
+  }
+  :focus {
+    outline: 1px solid gray;
+  }
 `;
 
 const ProductSelect = styled.select`
-  border: 0;
+  border: none;
   margin: 1rem 0rem 1rem 0rem;
+  padding: 0.7rem 0rem 0.7rem 0rem;
+  border-radius: 5px;
+  outline: none;
+
+  :focus {
+    outline: 1px solid gray;
+  }
+`;
+
+const AddDetailButton = styled.button`
+  border: 0;
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
 `;
 
 export default AddDetailPage;

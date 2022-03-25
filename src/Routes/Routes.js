@@ -13,7 +13,7 @@ const AppRouter = () => {
   const AuthRodingPage = Auth(RodingPage, null);
   const AuthLoginPage = Auth(LoginPage, false);
   const AuthRegisterPage = Auth(RegisterPage, null);
-  const AuthDetailPage = Auth(DetailPage, false);
+  const AuthDetailPage = Auth(DetailPage, null);
   const AuthAddDetailPage = Auth(AddDetailPage, true);
 
   return (
