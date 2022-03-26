@@ -1,49 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import DetailExamine from "./DetailContents/DetailExamine";
-import DetailProfile from "./DetailContents/DetailProfile";
 import Header from "../../components/Header";
-import ContentStyle from "../../components/ContentStyle";
+import { useDispatch, useSelector } from "react-redux";
 
 const DetailPage = () => {
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.user.getProduct);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data, dispatch]);
+
   return (
     <>
       <Header />
       <ContentsWrapper>
         <InnerBox>
           <DetailExamine />
-          <div style={{ padding: "0rem 5.8rem 0rem 5.3rem" }}>
-            <DetailProfile />
-            <Hr />
-          </div>
           <Information>
-            <div>이사로 급처분-lg제습기(1만원)</div>
-            <div
-              style={{
-                fontSize: "10px",
-                padding: "5px 0px 10px 0px",
-                color: "gray",
-              }}
-            >
-              가구/인테리어 · 19시간 전
-            </div>
-            <div>10,000</div>
-            <div
-              style={{
-                padding: "15px 0px 15px 0px",
-                fontSize: "13px",
-                color: "gray",
-              }}
-            >
-              작동 지금도 사용하고 있는제품 <br />
-              이사로 급처분합니다.
-            </div>
-            <div
-              style={{ fontSize: "10px", color: "gray", paddingBottom: "20px" }}
-            >
-              관심4·채팅30·조회300
-            </div>
-            <Hr />
+            <ProductTitle>{data?.title}</ProductTitle>
+            <ProductCategory>{data?.category}</ProductCategory>
+            <ProductPrice>{data?.price}</ProductPrice>
+            <ProductDescription>{data?.description}</ProductDescription>
           </Information>
           <Another>
             <MoreWrapper>
@@ -79,12 +58,12 @@ const Hr = styled.div`
 `;
 
 const Information = styled.div`
-  padding: 1rem 6rem 2rem 5.3rem;
+  padding: 1rem 6rem 2rem 6rem;
 `;
 
 const Another = styled.div`
   display: flex;
-  padding: 0rem 5.8rem 0rem 5.3rem;
+  padding: 0rem 5.8rem 0rem 6rem;
   flex-direction: column;
 `;
 
@@ -109,6 +88,27 @@ const NavigaeButton = styled.button`
   :hover {
     color: #6a82ff;
   }
+`;
+
+const ProductTitle = styled.div`
+  margin-bottom: 0.5rem;
+`;
+
+const ProductCategory = styled.div`
+  margin-bottom: 0.5rem;
+  font-size: 10px;
+  color: gray;
+`;
+
+const ProductPrice = styled.div`
+  margin-bottom: 0.5rem;
+`;
+
+const ProductDescription = styled.div`
+  margin-bottom: 0.5rem;
+  padding: 15px 0px 15px 0px;
+  font-size: 13px;
+  color: gray;
 `;
 
 export default DetailPage;

@@ -4,6 +4,7 @@ import {
   LOGOUT_USER,
   REGISTER_USER,
   AUTH_USER,
+  GETPRODUCT,
 } from "../actions/types";
 
 export default function (state = {}, action) {
@@ -16,6 +17,8 @@ export default function (state = {}, action) {
       return { ...state, logoutSuccess: action.payload };
     case AUTH_USER:
       return { ...state, authSuccess: action.payload };
+    case GETPRODUCT:
+      return { ...state, getProduct: action.payload };
     default:
       return state;
   }

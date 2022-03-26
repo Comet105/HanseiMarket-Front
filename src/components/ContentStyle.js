@@ -3,11 +3,12 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Img from "../assets/png/test.png";
-import { product } from "../store/actions/UserAction";
+import { product, getProductId } from "../store/actions/UserAction";
 
 const ContentStyle = () => {
   const [testproduct, setTestProduct] = useState();
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(product()).then((res) => {
       if (res.payload) {
@@ -18,20 +19,25 @@ const ContentStyle = () => {
     });
   }, [dispatch]);
 
+  const onClickHandler = (id) => {
+    dispatch(getProductId(id)).then((res) => {
+      console.log(res);
+    });
+  };
+
   return (
-    <IsLink to="/detail">
-      <ContentsWrapper>
-        {testproduct &&
-          testproduct.map((value) => (
-            <InnerBox>
+    <ContentsWrapper>
+      {testproduct &&
+        testproduct.map((value) => (
+          <InnerBox>
+            <IsLink to="/detail" onClick={() => onClickHandler(value.id)}>
               <ContentsImg src={Img} />
               <ContentsExplanation>{value.title}</ContentsExplanation>
               <ContentsExplanation>{value.price}</ContentsExplanation>
-              <ContentsExplanation>{value.description}</ContentsExplanation>
-            </InnerBox>
-          ))}
-      </ContentsWrapper>
-    </IsLink>
+            </IsLink>
+          </InnerBox>
+        ))}
+    </ContentsWrapper>
   );
 };
 
@@ -70,11 +76,6 @@ const ContentsImg = styled.img`
 `;
 
 const ContentsExplanation = styled.div`
-  margin-bottom: 0.5rem;
-`;
-
-const Money = styled.div`
-  font-weight: 600;
   margin-bottom: 0.5rem;
 `;
 

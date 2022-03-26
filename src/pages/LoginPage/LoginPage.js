@@ -26,10 +26,14 @@ const LoginPage = (props) => {
     dispatch(login(body))
       .then((res) => {
         if (res.payload.loginSuccess) {
-          toast("로그인에 성공하셨습니다.");
+          toast.success("로그인에 성공하셨습니다.", {
+            autoClose: 1500,
+          });
           navigate("/");
         } else {
-          toast("로그인에 실패하셨습니다.");
+          toast.error("로그인에 실패하셨습니다.", {
+            autoClose: 1500,
+          });
         }
       })
       .catch((err) => {

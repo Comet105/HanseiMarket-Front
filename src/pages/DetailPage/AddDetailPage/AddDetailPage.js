@@ -39,7 +39,6 @@ const AddDetailPage = (props) => {
     };
 
     dispatch(addproduct(body)).then((res) => {
-      console.log(res);
       if (res.payload) {
         toast("등록 성공");
         navigate("/list");

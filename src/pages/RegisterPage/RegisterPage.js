@@ -35,10 +35,14 @@ const RegisterPage = (props) => {
       dispatch(register(body))
         .then((res) => {
           if (res.payload.registerSuccess) {
-            toast("가입이 정상적으로 완료되었습니다.");
+            toast.success("가입이 정상적으로 완료되었습니다.", {
+              autoClose: 1500,
+            });
             navigate("/login");
           } else {
-            toast("가입실패");
+            toast.error("가입실패", {
+              autoClose: 1500,
+            });
             console.log(res.error.message);
           }
         })
@@ -46,7 +50,9 @@ const RegisterPage = (props) => {
           console.log(err);
         });
     } else {
-      toast("비밀번호가 일치하지 않습니다.");
+      toast.error("비밀번호가 일치하지 않습니다.", {
+        autoClose: 1500,
+      });
     }
   };
 

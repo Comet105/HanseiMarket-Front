@@ -2,31 +2,34 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { Provider } from "react-redux";
-import { applyMiddleware, createStore } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
 import promiseMiddlerware from "redux-promise";
 import reduxThunk from "redux-thunk";
-import reducer from "./store/reducers";
 import { GlobalStyle } from "./GlobalStyle";
 import axios from "axios";
+import persistedReducer from "./store/reducers";
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
 
 axios.defaults.withCredentials = true;
 
-const createStoreWidthMiddleware = applyMiddleware(
-  promiseMiddlerware,
-  reduxThunk
-)(createStore);
+const store = createStore(
+  persistedReducer,
+  compose(
+    applyMiddleware(promiseMiddlerware, reduxThunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
+);
+
+const persistor = persistStore(store);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider
-      store={createStoreWidthMiddleware(
-        reducer,
-        window.__REDUX_DEVTOOLS_EXTENSION__ &&
-          window.__REDUX_DEVTOOLS_EXTENSION__()
-      )}
-    >
-      <GlobalStyle />
-      <App />
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <GlobalStyle />
+        <App />
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

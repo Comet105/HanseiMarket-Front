@@ -5,9 +5,9 @@ import {
   AUTH_USER,
   ALLPRODUCT,
   ADDPRODUCT,
+  GETPRODUCT,
 } from "./types";
 import { request } from "../../utils/axios";
-import { type } from "@testing-library/user-event/dist/type";
 
 export const register = (dataToSubmit) => {
   const data = request("post", "/auth/signup", dataToSubmit, {
@@ -64,8 +64,19 @@ export const product = () => {
   const data = request("get", "/product/all", {
     withCredentials: true,
   });
+  console.log(data);
   return {
     type: ALLPRODUCT,
+    payload: data,
+  };
+};
+
+export const getProductId = (id) => {
+  const data = request("get", `/product/${id}`, {
+    withCredentials: true,
+  });
+  return {
+    type: GETPRODUCT,
     payload: data,
   };
 };

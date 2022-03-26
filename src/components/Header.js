@@ -18,7 +18,7 @@ const Header = (userId) => {
       setLgout(res.payload);
       setNickName(res.payload.nickname);
     });
-  }, []);
+  }, [dispatch]);
 
   const onClickHandler = () => {
     dispatch(logout())
