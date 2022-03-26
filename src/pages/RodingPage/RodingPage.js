@@ -1,19 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "../../components/Header";
 import ContentStyle from "../../components/ContentStyle";
-import { useDispatch } from "react-redux";
-import { product } from "../../store/actions/UserAction";
 
 const RodingPage = (props) => {
   const [search, setSearch] = useState();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(product()).then((res) => {
-      console.log(res);
-    });
-  }, []);
 
   return (
     <>
@@ -31,17 +22,6 @@ const RodingPage = (props) => {
             />
           </TitleWrapper>
           <ContentsWrapper>
-            <ContentStyle />
-            <ContentStyle />
-            <ContentStyle />
-            <ContentStyle />
-            <ContentStyle />
-            <ContentStyle />
-            <ContentStyle />
-            <ContentStyle />
-            <ContentStyle />
-            <ContentStyle />
-            <ContentStyle />
             <ContentStyle />
           </ContentsWrapper>
         </InnerBox>

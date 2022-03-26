@@ -33,6 +33,7 @@ export const addproduct = (dataToSubmit) => {
   const data = request("post", "/product", dataToSubmit, {
     withCredentials: true,
   });
+
   return {
     type: ADDPRODUCT,
     payload: data,

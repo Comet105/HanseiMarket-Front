@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Img from "../assets/png/test.png";
+import { product } from "../store/actions/UserAction";
 
 const ContentStyle = () => {
+  const [testproduct, setTestProduct] = useState([]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(product()).then((res) => {
+      console.log(res);
+      if (res.payload) {
+        setTestProduct([...testproduct, res.payload.Array]);
+        console.log("등록 완료!");
+      } else {
+        console.log("이미지를 불러들이지 못했습니다.");
+      }
+    });
+  }, []);
+
   return (
     <IsLink to="/detail">
       <ContentsWrapper>

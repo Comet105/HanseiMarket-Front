@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { addproduct } from "../../../store/actions/UserAction";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router";
 
 const AddDetailPage = (props) => {
   const [productTitle, setProductTitle] = useState("");
@@ -13,12 +14,25 @@ const AddDetailPage = (props) => {
   const [description, setDescription] = useState("");
   const [category, setCateGory] = useState("카테고리 선택");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onChangeHandler = (value) => {
+    const comma = (value) => {
+      value = String(value);
+      return value.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
+    };
+    const uncomma = (value) => {
+      value = String(value);
+      return value.replace(/[^\d]+/g, "");
+    };
+    return comma(uncomma(value));
+  };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
     let body = {
       title: productTitle,
-      price: price,
+      price: parseInt(price),
       description: description,
       category: category,
     };
@@ -27,6 +41,7 @@ const AddDetailPage = (props) => {
       console.log(res);
       if (res.payload) {
         toast("등록 성공");
+        navigate("/list");
       } else {
         toast("등록 실패");
       }
@@ -69,8 +84,8 @@ const AddDetailPage = (props) => {
 
             <ProductInput
               type="text"
-              value={price}
-              onChange={(e) => setPrice(e.currentTarget.value)}
+              value={onChangeHandler(price)}
+              onChange={(e) => setPrice(e.target.value)}
               placeholder="가격"
             />
 
@@ -138,6 +153,8 @@ const ProductInput = styled.input`
   padding: 0.8rem 0rem 0.8rem 0rem;
   margin: 1rem 0rem 1rem 0rem;
   border-radius: 3px;
+  word-wrap: break-word;
+  word-break: break-word;
 
   ::placeholder {
     color: #9f9f9f;
