@@ -6,27 +6,30 @@ import Img from "../assets/png/test.png";
 import { product } from "../store/actions/UserAction";
 
 const ContentStyle = () => {
-  const [testproduct, setTestProduct] = useState([]);
+  const [testproduct, setTestProduct] = useState();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(product()).then((res) => {
-      console.log(res);
       if (res.payload) {
-        setTestProduct([...testproduct, res.payload.Array]);
-        console.log("등록 완료!");
+        setTestProduct(res.payload);
       } else {
         console.log("이미지를 불러들이지 못했습니다.");
       }
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <IsLink to="/detail">
       <ContentsWrapper>
-        <ContentsImg src={Img} />
-        <ContentsExplanation>삼성 공기청정기</ContentsExplanation>
-        <Money>30,000원</Money>
-        <div>해킹보안과 2반</div>
+        {testproduct &&
+          testproduct.map((value) => (
+            <InnerBox>
+              <ContentsImg src={Img} />
+              <ContentsExplanation>{value.title}</ContentsExplanation>
+              <ContentsExplanation>{value.price}</ContentsExplanation>
+              <ContentsExplanation>{value.description}</ContentsExplanation>
+            </InnerBox>
+          ))}
       </ContentsWrapper>
     </IsLink>
   );
@@ -44,6 +47,16 @@ const IsLink = styled(Link)`
 `;
 
 const ContentsWrapper = styled.div`
+  display: grid;
+  margin: 0px;
+  justify-content: center;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 20px;
+  column-gap: 3.5rem;
+  width: 50rem;
+`;
+
+const InnerBox = styled.div`
   display: flex;
   flex-direction: column;
 `;

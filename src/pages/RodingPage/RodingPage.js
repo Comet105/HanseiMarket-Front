@@ -21,9 +21,7 @@ const RodingPage = (props) => {
               placeholder="검색어를 입력해주세요..."
             />
           </TitleWrapper>
-          <ContentsWrapper>
-            <ContentStyle />
-          </ContentsWrapper>
+          <ContentStyle />
         </InnerBox>
       </CalibernWrapper>
     </>
@@ -71,16 +69,6 @@ const ListInput = styled.input`
   :focus {
     outline: 1px solid gray;
   }
-`;
-
-const ContentsWrapper = styled.div`
-  display: grid;
-  margin: 0px auto;
-  justify-content: center;
-  grid-template-columns: repeat(4, 1fr);
-  row-gap: 20px;
-  column-gap: 3.5rem;
-  width: 50rem;
 `;
 
 export default RodingPage;

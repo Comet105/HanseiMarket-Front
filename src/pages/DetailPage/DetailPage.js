@@ -50,11 +50,7 @@ const DetailPage = () => {
               <div>당근마켓 인기중고</div>
               <NavigaeButton>더 구경하기</NavigaeButton>
             </MoreWrapper>
-            <MoreNavigation>
-              <ContentStyle />
-              <ContentStyle />
-              <ContentStyle />
-            </MoreNavigation>
+            <MoreNavigation></MoreNavigation>
           </Another>
         </InnerBox>
       </ContentsWrapper>

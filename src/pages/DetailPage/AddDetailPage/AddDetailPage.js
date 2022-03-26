@@ -30,6 +30,7 @@ const AddDetailPage = (props) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
+
     let body = {
       title: productTitle,
       price: parseInt(price),
