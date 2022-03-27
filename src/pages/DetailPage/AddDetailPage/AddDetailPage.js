@@ -1,37 +1,63 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Header from "../../../components/Header";
 import Img from "../../../assets/png/test5.png";
 import { useDispatch } from "react-redux";
-import { addproduct } from "../../../store/actions/UserAction";
+import { addproduct, getimage } from "../../../store/actions/UserAction";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
+import NumberFormat from "react-number-format";
 
 const AddDetailPage = (props) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [productTitle, setProductTitle] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCateGory] = useState("카테고리 선택");
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const [files, setFiles] = useState("");
 
-  const onChangeHandler = (value) => {
-    const comma = (value) => {
-      value = String(value);
-      return value.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
-    };
-    const uncomma = (value) => {
-      value = String(value);
-      return value.replace(/[^\d]+/g, "");
-    };
-    return comma(uncomma(value));
+  const onLoadFile = (e) => {
+    const file = e.target.files;
+    // console.log(file);
+    setFiles(file);
   };
+
+  const handleClick = (e) => {
+    const formdata = new FormData();
+    formdata.append("images", files[0]);
+
+    const config = {
+      Headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
+    dispatch(getimage(formdata, config))
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // const onChangeHandler = (value) => {
+  //   const comma = (value) => {
+  //     value = String(value);
+  //     return value.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
+  //   };
+  //   const uncomma = (value) => {
+  //     value = String(value);
+  //     return value.replace(/[^\d]+/g, "");
+  //   };
+  //   return comma(uncomma(value));
+  // };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
-    let body = {
+    const body = {
       title: productTitle,
       price: parseInt(price),
       description: description,
@@ -54,9 +80,21 @@ const AddDetailPage = (props) => {
       <AddDetailWrapper>
         <Innerbox>
           <Title>상품 등록</Title>
-          <AddPhotoButton>
-            <AddPhoto src={Img} />
-          </AddPhotoButton>
+
+          <AddPhotoForm onSubmit={onSubmitHandler}>
+            <label for="file-input">
+              <AddPhotoImg src={Img} />
+            </label>
+
+            <input
+              id="file-input"
+              type="file"
+              style={{ display: "none" }}
+              accept="img/*"
+              onChange={onLoadFile}
+            />
+          </AddPhotoForm>
+
           <Hr />
           <AddDetialForm onSubmit={onSubmitHandler}>
             <ProductInput
@@ -82,9 +120,20 @@ const AddDetailPage = (props) => {
 
             <Hr />
 
-            <ProductInput
+            <NumberFormat
+              thousandSeparator={true}
               type="text"
-              value={onChangeHandler(price)}
+              style={{
+                display: "block",
+                border: "0",
+                padding: "0.8rem 0rem 0.8rem 0rem",
+                margin: "1rem 0rem 1rem 0rem",
+                borderRadius: "3px",
+                wordWrap: "break-word",
+                wordBreak: "break-word",
+                focus: "outline: 1px solid gray",
+              }}
+              value={price}
               onChange={(e) => setPrice(e.target.value)}
               placeholder="가격"
             />
@@ -97,7 +146,9 @@ const AddDetailPage = (props) => {
               placeholder="상품설명"
             />
 
-            <AddDetailButton type="submit">등록하기</AddDetailButton>
+            <AddDetailButton type="submit" onClick={handleClick}>
+              등록하기
+            </AddDetailButton>
           </AddDetialForm>
         </Innerbox>
       </AddDetailWrapper>
@@ -124,16 +175,17 @@ const Title = styled.div`
   font-size: 30px;
 `;
 
-const AddPhotoButton = styled.button`
+const AddPhotoForm = styled.form`
   border: 0;
   margin: 3rem 16rem 2rem 0rem;
   background-color: transparent;
   cursor: pointer;
 `;
 
-const AddPhoto = styled.img`
+const AddPhotoImg = styled.img`
   width: 10rem;
   height: 7rem;
+  cursor: pointer;
 `;
 
 const Hr = styled.div`

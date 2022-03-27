@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import DetailExamine from "./DetailContents/DetailExamine";
 import Header from "../../components/Header";
@@ -26,7 +26,7 @@ const DetailPage = () => {
           </Information>
           <Another>
             <MoreWrapper>
-              <div>당근마켓 인기중고</div>
+              <div>한세마켓 인기중고</div>
               <NavigaeButton>더 구경하기</NavigaeButton>
             </MoreWrapper>
             <MoreNavigation></MoreNavigation>

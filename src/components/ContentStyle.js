@@ -12,6 +12,7 @@ const ContentStyle = () => {
   useEffect(() => {
     dispatch(product()).then((res) => {
       if (res.payload) {
+        console.log(res);
         setTestProduct(res.payload);
       } else {
         console.log("이미지를 불러들이지 못했습니다.");
@@ -31,7 +32,7 @@ const ContentStyle = () => {
         testproduct.map((value) => (
           <InnerBox>
             <IsLink to="/detail" onClick={() => onClickHandler(value.id)}>
-              <ContentsImg src={Img} />
+              <ContentsImg src={value.productImg} />
               <ContentsExplanation>{value.title}</ContentsExplanation>
               <ContentsExplanation>{value.price}</ContentsExplanation>
             </IsLink>

@@ -5,3 +5,4 @@ export const AUTH_USER = "AUTH_USER";
 export const ALLPRODUCT = "ALLPRODUCT";
 export const ADDPRODUCT = "ADDPRODUCT";
 export const GETPRODUCT = "GETPRODUCT";
+export const GETIMAGE = "GETIMAGE";
