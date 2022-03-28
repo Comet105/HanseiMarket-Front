@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { auth } from "../store/actions/UserAction";
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default function (Component, option, adminRoute = null) {
+export default function (Component, option) {
   const AuthCheck = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();

@@ -2,11 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import CaretLeft from "../../../assets/svg/CaretLeft.svg";
 import CaretRight from "../../../assets/svg/CaretRight.svg";
-import Img from "../../../assets/png/test3.png";
 import { useSelector } from "react-redux";
 
 const DetailExamine = () => {
-  const data = useSelector((state) => state.user.getProduct);
+  const data = useSelector((state) => state.user.getimage);
 
   return (
     <NavigateWrapper>
@@ -14,7 +13,7 @@ const DetailExamine = () => {
         <BeforeNavigation src={CaretLeft} />
       </NaviagteButton>
       <DownloadBtn>
-        <ContentsImg src={data?.productImg} />
+        <ContentsImg src={data?.location} />
       </DownloadBtn>
 
       <NaviagteButton>

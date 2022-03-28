@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Img from "../assets/png/test.png";
 import { product, getProductId } from "../store/actions/UserAction";
 
 const ContentStyle = () => {
-  const [testproduct, setTestProduct] = useState();
   const dispatch = useDispatch();
+  const [testproduct, setTestProduct] = useState();
 
   useEffect(() => {
     dispatch(product()).then((res) => {

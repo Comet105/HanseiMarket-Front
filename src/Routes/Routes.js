@@ -7,6 +7,7 @@ import MainPage from "../pages/MainPage/MainPage";
 import DetailPage from "../pages/DetailPage/DetailPage";
 import Auth from "../hoc/Auth";
 import AddDetailPage from "../pages/DetailPage/AddDetailPage/AddDetailPage";
+import ChatPage from "../components/ChatPage";
 
 const AppRouter = () => {
   const AuthMainPage = Auth(MainPage, null);
@@ -15,6 +16,7 @@ const AppRouter = () => {
   const AuthRegisterPage = Auth(RegisterPage, null);
   const AuthDetailPage = Auth(DetailPage, null);
   const AuthAddDetailPage = Auth(AddDetailPage, true);
+  const AuthChatPage = Auth(ChatPage, null);
 
   return (
     <BrowserRouter>
@@ -25,6 +27,7 @@ const AppRouter = () => {
         <Route path="/register" element={<AuthRegisterPage />} />
         <Route path="/detail" element={<AuthDetailPage />} />
         <Route path="/addproduct" element={<AuthAddDetailPage />} />
+        <Route path="/chat" element={<AuthChatPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "../../../components/Header";
 import Img from "../../../assets/png/test5.png";
@@ -66,10 +66,14 @@ const AddDetailPage = (props) => {
 
     dispatch(addproduct(body)).then((res) => {
       if (res.payload) {
-        toast("등록 성공");
+        toast.success("등록 성공", {
+          autoClose: 1500,
+        });
         navigate("/list");
       } else {
-        toast("등록 실패");
+        toast.error("등록 실패", {
+          autoClose: 1500,
+        });
       }
     });
   };
@@ -120,19 +124,9 @@ const AddDetailPage = (props) => {
 
             <Hr />
 
-            <NumberFormat
+            <NumFormat
               thousandSeparator={true}
               type="text"
-              style={{
-                display: "block",
-                border: "0",
-                padding: "0.8rem 0rem 0.8rem 0rem",
-                margin: "1rem 0rem 1rem 0rem",
-                borderRadius: "3px",
-                wordWrap: "break-word",
-                wordBreak: "break-word",
-                focus: "outline: 1px solid gray",
-              }}
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               placeholder="가격"
@@ -191,6 +185,23 @@ const AddPhotoImg = styled.img`
 const Hr = styled.div`
   border: 1px solid silver;
   width: 25rem;
+`;
+
+const NumFormat = styled(NumberFormat)`
+  display: block;
+  border: 0;
+  padding: 0.8rem 0rem 0.8rem 0rem;
+  margin: 1rem 0rem 1rem 0rem;
+  border-radius: 3px;
+  word-wrap: break-word;
+  word-break: break-word;
+
+  ::placeholder {
+    color: #9f9f9f;
+  }
+  :focus {
+    outline: 1px solid gray;
+  }
 `;
 
 const AddDetialForm = styled.form`

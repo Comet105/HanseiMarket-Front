@@ -55,8 +55,8 @@ export const getimage = (formdata, config) => {
   const data = request("post", "/image", formdata, config, {
     withCredentials: true,
   });
-  console.log(formdata);
-  console.log(config);
+  // console.log(formdata);
+  // console.log(config);
   return {
     type: GETIMAGE,
     payload: data,
