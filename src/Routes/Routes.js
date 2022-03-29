@@ -7,7 +7,7 @@ import MainPage from "../pages/MainPage/MainPage";
 import DetailPage from "../pages/DetailPage/DetailPage";
 import Auth from "../hoc/Auth";
 import AddDetailPage from "../pages/DetailPage/AddDetailPage/AddDetailPage";
-import ChatPage from "../components/ChatPage";
+import ChatPage from "../components/Chatting/ChatPage";
 
 const AppRouter = () => {
   const AuthMainPage = Auth(MainPage, null);

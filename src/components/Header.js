@@ -7,8 +7,8 @@ import { auth, logout } from "../store/actions/UserAction";
 
 const Header = (userId) => {
   const [search, setSearch] = useState("");
-  const [lgout, setLgout] = useState();
-  const [nickname, setNickName] = useState();
+  const [lgout, setLgout] = useState("");
+  const [nickname, setNickName] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

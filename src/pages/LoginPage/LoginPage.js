@@ -25,7 +25,7 @@ const LoginPage = (props) => {
 
     dispatch(login(body))
       .then((res) => {
-        if (res.payload.logoutSuccess) {
+        if (res.payload.loginSuccess) {
           toast.success("로그인에 성공하셨습니다.", {
             autoClose: 1500,
           });

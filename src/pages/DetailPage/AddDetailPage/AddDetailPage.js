@@ -21,10 +21,12 @@ const AddDetailPage = (props) => {
   const onLoadFile = (e) => {
     const file = e.target.files;
     // console.log(file);
+    console.log(typeof files);
     setFiles(file);
   };
 
   const handleClick = (e) => {
+    if (files[0] === undefined || null) return setFiles("djawnstlr");
     const formdata = new FormData();
     formdata.append("images", files[0]);
 

@@ -7,7 +7,7 @@ const ChatPage = () => {
       <ChatWrapper>
         <UserList>Users</UserList>
         <ChatMain>
-          <ChatList>ChatList</ChatList>
+          <ChatList>Have a good deal!</ChatList>
           <Chatting>Chatting</Chatting>
         </ChatMain>
       </ChatWrapper>
@@ -42,6 +42,7 @@ const UserList = styled.div`
 
 const ChatList = styled.div`
   padding: 5px 0 0 5px;
+  font-size: 2rem;
 `;
 
 const Chatting = styled.div`
