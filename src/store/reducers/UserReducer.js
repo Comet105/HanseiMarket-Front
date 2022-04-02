@@ -6,6 +6,7 @@ import {
   AUTH_USER,
   GETPRODUCT,
   GETIMAGE,
+  GETSEARCH,
 } from "../actions/types";
 
 export default function (state = {}, action) {
@@ -22,6 +23,8 @@ export default function (state = {}, action) {
       return { ...state, getProduct: action.payload };
     case GETIMAGE:
       return { ...state, getimage: action.payload };
+    case GETSEARCH:
+      return { ...state, getsearch: action.payload };
     default:
       return state;
   }

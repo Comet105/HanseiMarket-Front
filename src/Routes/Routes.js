@@ -8,6 +8,8 @@ import DetailPage from "../pages/DetailPage/DetailPage";
 import Auth from "../hoc/Auth";
 import AddDetailPage from "../pages/DetailPage/AddDetailPage/AddDetailPage";
 import ChatPage from "../components/Chatting/ChatPage";
+import Search from "../components/Search";
+import SearchPage from "../pages/SearchPage";
 
 const AppRouter = () => {
   const AuthMainPage = Auth(MainPage, null);
@@ -28,6 +30,7 @@ const AppRouter = () => {
         <Route path="/detail" element={<AuthDetailPage />} />
         <Route path="/addproduct" element={<AuthAddDetailPage />} />
         <Route path="/chat" element={<AuthChatPage />} />
+        <Route path="/search/:id" element={<SearchPage />} />
       </Routes>
     </BrowserRouter>
   );

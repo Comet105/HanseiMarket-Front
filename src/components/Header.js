@@ -4,9 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import LogoSVG from "../assets/svg/MainLogo.svg";
 import { auth, logout } from "../store/actions/UserAction";
+import Search from "./Search";
 
 const Header = (userId) => {
-  const [search, setSearch] = useState("");
   const [lgout, setLgout] = useState("");
   const [nickname, setNickName] = useState("");
 
@@ -23,7 +23,6 @@ const Header = (userId) => {
   const onClickHandler = () => {
     dispatch(logout())
       .then((res) => {
-        console.log(res);
         if (res.payload.logoutSuccess) {
           navigate("/login");
         } else {
@@ -39,12 +38,7 @@ const Header = (userId) => {
         <Link to="/">
           <Img src={LogoSVG} />
         </Link>
-        <Search
-          value={search}
-          type="text"
-          placeholder="검색어를 입력해주세요..."
-          onChange={(e) => setSearch(e.currentTarget.value)}
-        />
+        <Search />
       </HeaderWrapper>
       <ProfileWrapper>
         {nickname ? (
@@ -86,20 +80,6 @@ const HeaderWrapper = styled.div`
 `;
 
 const Img = styled.img``;
-
-const Search = styled.input`
-  background-color: #eaeaea;
-  color: #444444;
-  border: 0;
-  border-radius: 4px;
-  font-size: 12px;
-  margin-left: 5rem;
-  width: 15rem;
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  :focus {
-    outline: 1px solid gray;
-  }
-`;
 
 const ProfileWrapper = styled.div`
   display: flex;

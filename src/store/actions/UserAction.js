@@ -7,6 +7,7 @@ import {
   ADDPRODUCT,
   GETPRODUCT,
   GETIMAGE,
+  GETSEARCH,
 } from "./types";
 import { request } from "../../utils/axios";
 
@@ -34,7 +35,6 @@ export const addproduct = (dataToSubmit) => {
   const data = request("post", "/product", dataToSubmit, {
     withCredentials: true,
   });
-
   return {
     type: ADDPRODUCT,
     payload: data,
@@ -51,12 +51,10 @@ export const logout = () => {
   };
 };
 
-export const getimage = (formdata, config) => {
-  const data = request("post", "/image", formdata, config, {
+export const getimage = (formData) => {
+  const data = request("post", "/image", formData, {
     withCredentials: true,
   });
-  // console.log(formdata);
-  // console.log(config);
   return {
     type: GETIMAGE,
     payload: data,
@@ -90,6 +88,17 @@ export const getProductId = (id) => {
   });
   return {
     type: GETPRODUCT,
+    payload: data,
+  };
+};
+
+export const getsearch = (value) => {
+  const data = request("get", `/product/search/${value}`, {
+    withCredentials: true,
+  });
+  console.log(value);
+  return {
+    type: GETSEARCH,
     payload: data,
   };
 };

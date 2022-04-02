@@ -8,3 +8,4 @@ export const ADDPRODUCT = "ADDPRODUCT";
 
 export const GETPRODUCT = "GETPRODUCT";
 export const GETIMAGE = "GETIMAGE";
+export const GETSEARCH = "GETSEARCH";

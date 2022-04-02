@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Header from "../../../components/Header";
 import Img from "../../../assets/png/test5.png";
@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
 import NumberFormat from "react-number-format";
+import NotImages from "../../../assets/png/NotImages.png";
 
 const AddDetailPage = (props) => {
   const dispatch = useDispatch();
@@ -19,42 +20,20 @@ const AddDetailPage = (props) => {
   const [files, setFiles] = useState("");
 
   const onLoadFile = (e) => {
-    const file = e.target.files;
-    // console.log(file);
-    console.log(typeof files);
-    setFiles(file);
-  };
-
-  const handleClick = (e) => {
-    if (files[0] === undefined || null) return setFiles("djawnstlr");
-    const formdata = new FormData();
-    formdata.append("images", files[0]);
-
-    const config = {
-      Headers: {
-        "content-type": "multipart/form-data",
-      },
-    };
-    dispatch(getimage(formdata, config))
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
+    console.log(formData);
+    for (const keyValue of formData) console.log(keyValue);
+    dispatch(getimage(formData))
       .then((res) => {
         console.log(res);
+        setFiles(formData);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
-  // const onChangeHandler = (value) => {
-  //   const comma = (value) => {
-  //     value = String(value);
-  //     return value.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
-  //   };
-  //   const uncomma = (value) => {
-  //     value = String(value);
-  //     return value.replace(/[^\d]+/g, "");
-  //   };
-  //   return comma(uncomma(value));
-  // };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -64,6 +43,7 @@ const AddDetailPage = (props) => {
       price: parseInt(price),
       description: description,
       category: category,
+      images: files,
     };
 
     dispatch(addproduct(body)).then((res) => {
@@ -142,9 +122,7 @@ const AddDetailPage = (props) => {
               placeholder="상품설명"
             />
 
-            <AddDetailButton type="submit" onClick={handleClick}>
-              등록하기
-            </AddDetailButton>
+            <AddDetailButton type="submit">등록하기</AddDetailButton>
           </AddDetialForm>
         </Innerbox>
       </AddDetailWrapper>

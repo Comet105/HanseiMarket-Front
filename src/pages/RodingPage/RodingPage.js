@@ -5,8 +5,6 @@ import ContentStyle from "../../components/ContentStyle";
 import { Link } from "react-router-dom";
 
 const RodingPage = (props) => {
-  const [search, setSearch] = useState();
-
   return (
     <>
       <Header />
@@ -16,12 +14,6 @@ const RodingPage = (props) => {
             <TitleWrapper>
               <Title>오늘의 중고물품은?</Title>
               <Banner>오늘의 중고물품 딱대!!! 다같이 냠냠쩝쩝's</Banner>
-              <ListInput
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.currentTarget.value)}
-                placeholder="검색어를 입력해주세요..."
-              />
             </TitleWrapper>
             <LinkTo to="/addproduct">등록하러 가기</LinkTo>
           </LineUp>
@@ -35,8 +27,8 @@ const RodingPage = (props) => {
 
 const CalibernWrapper = styled.div`
   display: flex;
-  margin-top: 5rem;
-  width: 100%;
+  max-width: 1200px;
+  margin: 5rem auto;
   height: 100vh;
 `;
 
@@ -55,14 +47,16 @@ const TitleWrapper = styled.form`
 
 const LineUp = styled.div`
   display: flex;
-  justify-content: space-around;
-  width: 74%;
+  width: 900px;
+  margin: 0 auto;
+  margin-bottom: 3rem;
 `;
 
 const LinkTo = styled(Link)`
   display: flex;
   align-items: center;
   color: black;
+  white-space: nowrap;
 
   :visited {
     color: black;
