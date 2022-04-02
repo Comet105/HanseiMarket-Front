@@ -1,56 +1,74 @@
 import React from "react";
 import styled from "styled-components";
+import Header from "../Header";
+import Sidebar from "./Sidebar/Sidebar";
 
 const ChatPage = () => {
   return (
-    <Container>
-      <ChatWrapper>
-        <UserList>Users</UserList>
-        <ChatMain>
-          <ChatList>Have a good deal!</ChatList>
-          <Chatting>Chatting</Chatting>
-        </ChatMain>
-      </ChatWrapper>
-    </Container>
+    <>
+      <Header />
+      <Container>
+        <Innerbox>
+          <Chatbox>
+            <ChatWrapper>
+              <Sidebar />
+              <ChatMain>
+                <ChatContent></ChatContent>
+                <Chatting></Chatting>
+              </ChatMain>
+              <Test></Test>
+            </ChatWrapper>
+          </Chatbox>
+        </Innerbox>
+      </Container>
+    </>
   );
 };
 
 const Container = styled.div`
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-`;
-
-const ChatWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-areas: "sidebar main";
-  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   height: 100vh;
 `;
 
-const ChatMain = styled.div`
-  grid-area: main;
-`;
-
-const UserList = styled.div`
-  grid-area: sidebar;
-  padding: 5px 0 0 5px;
-  border-right: 1px solid #3f3f3f;
+const Innerbox = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
   height: 100%;
 `;
 
-const ChatList = styled.div`
-  padding: 5px 0 0 5px;
-  font-size: 2rem;
+const Chatbox = styled.div`
+  height: 100%;
 `;
 
-const Chatting = styled.div`
-  position: fixed;
-  bottom: 0;
+const ChatWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8rem;
+  border-radius: 11px;
+  box-shadow: 2px 2px 12px 5px #f0f0f0;
+`;
+
+const ChatMain = styled.div``;
+
+const ChatContent = styled.div`
+  padding: 20rem 25rem 20rem 25rem;
+
+  background-color: #fcfcfc;
+`;
+
+const Chatting = styled.footer`
   width: 100%;
-  padding: 2rem;
-  border-top: 1px solid #3f3f3f;
+  height: 4rem;
+  background-color: black;
+`;
+
+const Test = styled.div`
+  height: 100%;
+  width: 15rem;
 `;
 
 export default ChatPage;

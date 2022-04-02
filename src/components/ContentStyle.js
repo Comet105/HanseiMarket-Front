@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { product, getProductId } from "../store/actions/UserAction";
+import NotImages from "../assets/png/NotImages.png";
 
 const ContentStyle = () => {
   const dispatch = useDispatch();

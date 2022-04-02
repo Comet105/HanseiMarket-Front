@@ -70,7 +70,11 @@ const HeaderBar = styled.header`
   align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
-  width: 100%;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   box-shadow: 2px 2px 12px 5px #f0f0f0;
 `;
 

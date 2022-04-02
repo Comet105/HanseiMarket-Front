@@ -55,7 +55,6 @@ export const getimage = (formData, config) => {
   const data = request("post", "/image", formData, config, {
     withCredentials: true,
   });
-  console.log(formData);
   return {
     type: GETIMAGE,
     payload: data,
@@ -76,7 +75,6 @@ export const product = () => {
   const data = request("get", "/product/all", {
     withCredentials: true,
   });
-  console.log(data);
   return {
     type: ALLPRODUCT,
     payload: data,

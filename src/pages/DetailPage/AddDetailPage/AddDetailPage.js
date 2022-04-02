@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Header from "../../../components/Header";
@@ -8,7 +9,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
 import NumberFormat from "react-number-format";
-import NotImages from "../../../assets/png/NotImages.png";
 
 const AddDetailPage = (props) => {
   const dispatch = useDispatch();
@@ -17,12 +17,12 @@ const AddDetailPage = (props) => {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCateGory] = useState("카테고리 선택");
-  const [files, setFiles] = useState("");
+  const [files, setFiles] = useState([]);
 
   const onLoadFile = (e) => {
-    const file = e.target.files;
-    // console.log(file);
-    setFiles(file);
+    setFiles([...e.target.files]);
+    // const file = e.target.files;
+    // setFiles(file);
   };
 
   const handleClick = (e) => {
@@ -33,13 +33,7 @@ const AddDetailPage = (props) => {
         "content-type": "multipart/form-data",
       },
     };
-    dispatch(getimage(formdata, config))
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    dispatch(getimage(formdata, config));
   };
 
   const onSubmitHandler = (e) => {
