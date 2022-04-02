@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Header from "../../components/Header";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getProductId, getsearch } from "../../store/actions/UserAction";
 
-const SearchPage = (props) => {
+const SearchPage = ({ props }) => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.user.getsearch);
+  const url = useParams();
 
   useEffect(() => {
-    dispatch(getsearch());
-    console.log(data);
-  }, []);
+    dispatch(getsearch(url.id));
+  }, [url.id]);
 
   const onClickHandler = (id) => {
-    dispatch(getProductId(id)).then((res) => {
-      // console.log(res);
-    });
+    dispatch(getProductId(id));
   };
 
   return (

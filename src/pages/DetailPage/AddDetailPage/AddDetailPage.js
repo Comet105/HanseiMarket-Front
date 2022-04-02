@@ -20,15 +20,22 @@ const AddDetailPage = (props) => {
   const [files, setFiles] = useState("");
 
   const onLoadFile = (e) => {
-    const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append("file", file);
-    console.log(formData);
-    for (const keyValue of formData) console.log(keyValue);
-    dispatch(getimage(formData))
+    const file = e.target.files;
+    // console.log(file);
+    setFiles(file);
+  };
+
+  const handleClick = (e) => {
+    const formdata = new FormData();
+    formdata.append("images", files[0]);
+    const config = {
+      Headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
+    dispatch(getimage(formdata, config))
       .then((res) => {
         console.log(res);
-        setFiles(formData);
       })
       .catch((error) => {
         console.log(error);
@@ -122,7 +129,9 @@ const AddDetailPage = (props) => {
               placeholder="상품설명"
             />
 
-            <AddDetailButton type="submit">등록하기</AddDetailButton>
+            <AddDetailButton type="submit" onClick={handleClick}>
+              등록하기
+            </AddDetailButton>
           </AddDetialForm>
         </Innerbox>
       </AddDetailWrapper>

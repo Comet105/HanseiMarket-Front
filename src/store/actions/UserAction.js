@@ -51,10 +51,11 @@ export const logout = () => {
   };
 };
 
-export const getimage = (formData) => {
-  const data = request("post", "/image", formData, {
+export const getimage = (formData, config) => {
+  const data = request("post", "/image", formData, config, {
     withCredentials: true,
   });
+  console.log(formData);
   return {
     type: GETIMAGE,
     payload: data,
@@ -96,7 +97,6 @@ export const getsearch = (value) => {
   const data = request("get", `/product/search/${value}`, {
     withCredentials: true,
   });
-  console.log(value);
   return {
     type: GETSEARCH,
     payload: data,

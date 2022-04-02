@@ -12,10 +12,7 @@ const Search = () => {
   const onSubmitHandler = (e, value) => {
     e.preventDefault();
     navigate(`/search/${search}`);
-
-    // dispatch(getsearch(search)).then((res) => {
-    //   console.log(search);
-    // });
+    dispatch(getsearch(search));
   };
 
   return (
