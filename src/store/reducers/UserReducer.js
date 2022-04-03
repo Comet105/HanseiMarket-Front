@@ -22,9 +22,9 @@ export default function (state = {}, action) {
     case GETPRODUCT:
       return { ...state, getProduct: action.payload };
     case GETIMAGE:
-      return { ...state, getimage: action.payload };
+      return { ...state, getImage: action.payload };
     case GETSEARCH:
-      return { ...state, getsearch: action.payload };
+      return { ...state, getSearch: action.payload };
     default:
       return state;
   }

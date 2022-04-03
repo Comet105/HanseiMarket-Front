@@ -55,7 +55,7 @@ const ChatWrapper = styled.div`
 const ChatMain = styled.div``;
 
 const ChatContent = styled.div`
-  padding: 20rem 25rem 20rem 25rem;
+  padding: 20rem 20rem 20rem 20rem;
 
   background-color: #fcfcfc;
 `;

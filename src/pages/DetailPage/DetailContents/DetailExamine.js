@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import CaretLeft from "../../../assets/svg/CaretLeft.svg";
 import CaretRight from "../../../assets/svg/CaretRight.svg";
 import { useSelector } from "react-redux";
 
 const DetailExamine = () => {
-  const data = useSelector((state) => state.user.getimage);
+  const data = useSelector((state) => state.user.getProduct);
+
+  useEffect(() => {
+    console.log(data);
+  }, []);
 
   return (
     <NavigateWrapper>
@@ -32,6 +36,7 @@ const ContentsImg = styled.img`
 const NavigateWrapper = styled.div`
   display: flex;
   align-items: center;
+  margin: 3rem;
 `;
 
 const BeforeNavigation = styled.img`

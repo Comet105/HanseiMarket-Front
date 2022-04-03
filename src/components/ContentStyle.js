@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { product, getProductId } from "../store/actions/UserAction";
-import NotImages from "../assets/png/NotImages.png";
 
 const ContentStyle = () => {
   const dispatch = useDispatch();
@@ -71,8 +70,8 @@ const InnerBox = styled.div`
 const ContentsImg = styled.img`
   margin-top: 1rem;
   margin-bottom: 1rem;
-  width: 11.5rem;
-  height: 11.5rem;
+  width: 10rem;
+  height: 9.5rem;
   border-radius: 12px;
 `;
 

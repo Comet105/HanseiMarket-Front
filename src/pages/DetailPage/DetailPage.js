@@ -2,15 +2,14 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import DetailExamine from "./DetailContents/DetailExamine";
 import Header from "../../components/Header";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const DetailPage = () => {
-  const dispatch = useDispatch();
   const data = useSelector((state) => state.user.getProduct);
 
   useEffect(() => {
     console.log(data);
-  }, [data, dispatch]);
+  }, [data]);
 
   return (
     <>

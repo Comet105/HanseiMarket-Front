@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Header from "../../components/Header";
 import ContentStyle from "../../components/ContentStyle";
@@ -28,7 +28,7 @@ const RodingPage = (props) => {
 const CalibernWrapper = styled.div`
   display: flex;
   max-width: 1200px;
-  margin: 5rem auto;
+  margin: 9rem auto;
   height: 100vh;
 `;
 
@@ -47,7 +47,7 @@ const TitleWrapper = styled.form`
 
 const LineUp = styled.div`
   display: flex;
-  width: 900px;
+  width: 800px;
   margin: 0 auto;
   margin-bottom: 3rem;
 `;
@@ -76,19 +76,19 @@ const Title = styled.div`
 
 const Banner = styled.div``;
 
-const ListInput = styled.input`
-  background-color: #eaeaea;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  color: #444444;
-  border: 0;
-  border-radius: 4px;
-  font-size: 12px;
-  width: 15rem;
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  :focus {
-    outline: 1px solid gray;
-  }
-`;
+// const ListInput = styled.input`
+//   background-color: #eaeaea;
+//   margin-top: 1rem;
+//   margin-bottom: 1rem;
+//   color: #444444;
+//   border: 0;
+//   border-radius: 4px;
+//   font-size: 12px;
+//   width: 15rem;
+//   padding: 0.5rem 1rem 0.5rem 1rem;
+//   :focus {
+//     outline: 1px solid gray;
+//   }
+// `;
 
 export default RodingPage;

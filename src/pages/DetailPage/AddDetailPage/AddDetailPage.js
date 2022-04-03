@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "../../../components/Header";
 import Img from "../../../assets/png/test5.png";
@@ -33,7 +33,9 @@ const AddDetailPage = (props) => {
         "content-type": "multipart/form-data",
       },
     };
-    dispatch(getimage(formdata, config));
+    dispatch(getimage(formdata, config)).then((res) => {
+      console.log(res);
+    });
   };
 
   const onSubmitHandler = (e) => {
