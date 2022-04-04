@@ -7,7 +7,7 @@ import { getProductId, getsearch } from "../../store/actions/UserAction";
 
 const SearchPage = ({ props }) => {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.user.getsearch);
+  const data = useSelector((state) => state.user.getSearch);
   const url = useParams();
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import DetailExamine from "./DetailContents/DetailExamine";
+import DetailProfile from "./DetailContents/DetailProfile";
 import Header from "../../components/Header";
 import { useSelector } from "react-redux";
 
@@ -16,20 +16,30 @@ const DetailPage = () => {
       <Header />
       <ContentsWrapper>
         <InnerBox>
-          <DetailExamine />
-          <Information>
-            <ProductTitle>{data?.title}</ProductTitle>
-            <ProductCategory>{data?.category}</ProductCategory>
-            <ProductPrice>{data?.price}</ProductPrice>
-            <ProductDescription>{data?.description}</ProductDescription>
-          </Information>
-          <Another>
-            <MoreWrapper>
-              <div>한세마켓 인기중고</div>
-              <NavigaeButton>더 구경하기</NavigaeButton>
-            </MoreWrapper>
-            <MoreNavigation></MoreNavigation>
-          </Another>
+          <ContentsBox>
+            <NavigateWrapper>
+              <ContentsImg src={data?.url} />
+            </NavigateWrapper>
+
+            <DetailProfile />
+            <Hr />
+            <Information>
+              <ProductTitle>{data?.title}</ProductTitle>
+              <ProductCategory>{data?.category}</ProductCategory>
+              <ProductPrice>{data?.price}</ProductPrice>
+              <ProductDescription>{data?.description}</ProductDescription>
+            </Information>
+
+            <Hr />
+
+            <Another>
+              <MoreWrapper>
+                <div>한세마켓 인기중고</div>
+                <NavigaeButton>더 구경하기</NavigaeButton>
+              </MoreWrapper>
+              <MoreNavigation></MoreNavigation>
+            </Another>
+          </ContentsBox>
         </InnerBox>
       </ContentsWrapper>
     </>
@@ -38,31 +48,54 @@ const DetailPage = () => {
 
 const ContentsWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-top: 2rem;
   width: 100%;
   height: 100vh;
+  margin-top: 7rem;
 `;
 
 const InnerBox = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 `;
+
+const ContentsBox = styled.div`
+  height: 100%;
+`;
+
+const ContentsImg = styled.img`
+  width: 30rem;
+  height: 20rem;
+  border-radius: 7px;
+`;
+
+const NavigateWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+// const DownloadBtn = styled.button`
+//   border: 0;
+//   background-color: transparent;
+//   cursor: pointer;
+// `;
 
 const Hr = styled.div`
   margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   border: 1px solid silver;
   width: 100%;
 `;
 
 const Information = styled.div`
-  padding: 1rem 6rem 2rem 6rem;
+  margin-top: 1.5rem;
 `;
 
 const Another = styled.div`
   display: flex;
-  padding: 0rem 5.8rem 0rem 6rem;
   flex-direction: column;
 `;
 

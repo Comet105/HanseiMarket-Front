@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Img2 from "../../../assets/png/test4.png";
 import ChatCircleDots from "../../../assets/svg/ChatCircleDots.svg";
@@ -13,10 +14,12 @@ const DetailProfile = () => {
           <Department>해킹보안과 2반</Department>
         </ProgileContent>
       </Knot>
-      <ChatWrapper>
-        <ChatDots src={ChatCircleDots} />
-        <Chat>채팅하기</Chat>
-      </ChatWrapper>
+      <Link to="/chat">
+        <ChatWrapper>
+          <ChatDots src={ChatCircleDots} />
+          <Chat>채팅하기</Chat>
+        </ChatWrapper>
+      </Link>
     </ProfileWrapper>
   );
 };

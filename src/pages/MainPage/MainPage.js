@@ -48,22 +48,24 @@ const Innerbox = styled.div`
   display: flex;
   justify-content: space-around;
   width: 100%;
-  margin-bottom: 5rem;
 `;
 
 const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 5rem;
 `;
 
 const Title = styled.div`
   font-size: 3rem;
   font-weight: bold;
+  line-height: 3.8rem;
 `;
 
 const Banner = styled.div`
   margin-top: 2rem;
   font-size: 1.5rem;
+  line-height: 2rem;
 `;
 
 const MoveListButton = styled.button`
@@ -80,7 +82,7 @@ const ContentsWrapper = styled.div``;
 
 const ContentsImg = styled.img`
   width: 30rem;
-  height: 20rem;
+  height: 25rem;
 `;
 
 export default MainPage;
