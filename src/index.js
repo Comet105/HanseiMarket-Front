@@ -16,8 +16,8 @@ axios.defaults.withCredentials = true;
 const store = createStore(
   persistedReducer,
   compose(
-    applyMiddleware(promiseMiddlerware, reduxThunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(promiseMiddlerware, reduxThunk)
+    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 

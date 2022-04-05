@@ -68,8 +68,7 @@ const HeaderBar = styled.header`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 0;
   background-color: white;
   position: fixed;
   top: 0;

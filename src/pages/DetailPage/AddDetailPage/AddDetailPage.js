@@ -25,19 +25,6 @@ const AddDetailPage = (props) => {
     // setFiles(file);
   };
 
-  const handleClick = (e) => {
-    const formdata = new FormData();
-    formdata.append("images", files[0]);
-    const config = {
-      Headers: {
-        "content-type": "multipart/form-data",
-      },
-    };
-    dispatch(getimage(formdata, config)).then((res) => {
-      console.log(res);
-    });
-  };
-
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
@@ -60,6 +47,19 @@ const AddDetailPage = (props) => {
           autoClose: 1500,
         });
       }
+    });
+  };
+
+  const handleClick = (e) => {
+    const formdata = new FormData();
+    formdata.append("images", files[0]);
+    const config = {
+      Headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
+    dispatch(getimage(formdata, config)).then((res) => {
+      console.log(res);
     });
   };
 

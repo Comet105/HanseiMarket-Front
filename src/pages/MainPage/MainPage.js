@@ -47,34 +47,36 @@ const MainWrapper = styled.div`
 const Innerbox = styled.div`
   display: flex;
   justify-content: space-around;
+  align-items: center;
   width: 100%;
+  padding: 0 3rem;
 `;
 
 const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 5rem;
 `;
 
 const Title = styled.div`
-  font-size: 3rem;
+  font-size: 3.4rem;
   font-weight: bold;
-  line-height: 3.8rem;
+  line-height: 4.3rem;
 `;
 
 const Banner = styled.div`
-  margin-top: 2rem;
-  font-size: 1.5rem;
-  line-height: 2rem;
+  margin-top: 2.3rem;
+  font-size: 1.6rem;
+  line-height: 2.3rem;
 `;
 
 const MoveListButton = styled.button`
   border: 0;
   background-color: #f1f3f5;
   margin-top: 2rem;
+  font-size: 1rem;
   font-weight: bold;
-  padding: 1rem;
-  border-radius: 7px;
+  padding: 0.8rem 2.5rem 0.8rem 2.5rem;
+  border-radius: 4px;
   cursor: pointer;
 `;
 

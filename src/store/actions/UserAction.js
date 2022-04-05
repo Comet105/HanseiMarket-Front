@@ -35,6 +35,7 @@ export const addproduct = (dataToSubmit) => {
   const data = request("post", "/product", dataToSubmit, {
     withCredentials: true,
   });
+  console.log(dataToSubmit);
   return {
     type: ADDPRODUCT,
     payload: data,
@@ -55,6 +56,7 @@ export const getimage = (formData, config) => {
   const data = request("post", "/image", formData, config, {
     withCredentials: true,
   });
+  console.log(formData);
   return {
     type: GETIMAGE,
     payload: data,

@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "../Header";
 import Sidebar from "./Sidebar/Sidebar";
 
 const ChatPage = () => {
+  const [chatting, setChatting] = useState("");
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <Header />
@@ -14,7 +20,14 @@ const ChatPage = () => {
               <Sidebar />
               <ChatMain>
                 <ChatContent></ChatContent>
-                <Chatting></Chatting>
+                <ChattingWrapper onSubmit={onSubmitHandler}>
+                  <Chatting
+                    type="text"
+                    value={chatting}
+                    onChange={(e) => setChatting(e.currentTarget.value)}
+                    placeholder="채팅을 입력해주세요..."
+                  />
+                </ChattingWrapper>
               </ChatMain>
               <Test></Test>
             </ChatWrapper>
@@ -60,10 +73,21 @@ const ChatContent = styled.div`
   background-color: #fcfcfc;
 `;
 
-const Chatting = styled.footer`
+const ChattingWrapper = styled.footer`
+  display: flex;
+  align-items: center;
   width: 100%;
-  height: 4rem;
+  height: 3.5rem;
   background-color: black;
+`;
+
+const Chatting = styled.input`
+  width: 100%;
+  height: 2rem;
+  background-color: transparent;
+  color: white;
+  outline: 0;
+  border: 0;
 `;
 
 const Test = styled.div`
