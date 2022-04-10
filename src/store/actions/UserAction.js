@@ -53,7 +53,7 @@ export const logout = () => {
 };
 
 export const getimage = (formData, config) => {
-  const data = request("post", "/image", formData, config, {
+  const data = request("post", "/product/image", formData, config, {
     withCredentials: true,
   });
   console.log(formData);

@@ -24,13 +24,11 @@ const store = createStore(
 const persistor = persistStore(store);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <GlobalStyle />
-        <App />
-      </PersistGate>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <PersistGate persistor={persistor}>
+      <GlobalStyle />
+      <App />
+    </PersistGate>
+  </Provider>,
   document.getElementById("root")
 );
