@@ -1,11 +1,9 @@
-/* eslint-disable import/no-anonymous-default-export */
 import {
   LOGIN_USER,
   LOGOUT_USER,
   REGISTER_USER,
   AUTH_USER,
   GETPRODUCT,
-  GETIMAGE,
   GETSEARCH,
 } from "../actions/types";
 
@@ -21,8 +19,6 @@ export default function (state = {}, action) {
       return { ...state, authSuccess: action.payload };
     case GETPRODUCT:
       return { ...state, getProduct: action.payload };
-    case GETIMAGE:
-      return { ...state, getImage: action.payload };
     case GETSEARCH:
       return { ...state, getSearch: action.payload };
     default:

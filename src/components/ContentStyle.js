@@ -31,7 +31,7 @@ const ContentStyle = () => {
         testproduct.map((value) => (
           <InnerBox>
             <IsLink to="/detail" onClick={() => onClickHandler(value.id)}>
-              <ContentsImg src={value.url} />
+              <ContentsImg src={value.image} />
               <ContentsExplanation>{value.title}</ContentsExplanation>
               <ContentsExplanation>{value.price}</ContentsExplanation>
             </IsLink>

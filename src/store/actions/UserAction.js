@@ -6,7 +6,6 @@ import {
   ALLPRODUCT,
   ADDPRODUCT,
   GETPRODUCT,
-  GETIMAGE,
   GETSEARCH,
 } from "./types";
 import { request } from "../../utils/axios";
@@ -31,8 +30,8 @@ export const login = (dataToSubmit) => {
   };
 };
 
-export const addproduct = (dataToSubmit) => {
-  const data = request("post", "/product", dataToSubmit, {
+export const addproduct = (dataToSubmit, config) => {
+  const data = request("post", "/product", dataToSubmit, config, {
     withCredentials: true,
   });
   console.log(dataToSubmit);
@@ -48,17 +47,6 @@ export const logout = () => {
   });
   return {
     type: LOGOUT_USER,
-    payload: data,
-  };
-};
-
-export const getimage = (formData, config) => {
-  const data = request("post", "/product/image", formData, config, {
-    withCredentials: true,
-  });
-  console.log(formData);
-  return {
-    type: GETIMAGE,
     payload: data,
   };
 };

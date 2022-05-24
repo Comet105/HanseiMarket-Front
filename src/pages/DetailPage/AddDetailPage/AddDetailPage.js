@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-expressions */
 import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "../../../components/Header";
 import Img from "../../../assets/png/test5.png";
 import { useDispatch } from "react-redux";
-import { addproduct, getimage } from "../../../store/actions/UserAction";
+import { addproduct } from "../../../store/actions/UserAction";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
@@ -20,23 +19,32 @@ const AddDetailPage = (props) => {
   const [files, setFiles] = useState([]);
 
   const onLoadFile = (e) => {
-    setFiles([...e.target.files]);
-    // const file = e.target.files;
-    // setFiles(file);
+    e.preventDefault();
+
+    const formdata = new FormData();
+    formdata.append("file", files);
+    setFiles(e.target.files);
+    console.log(files);
   };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
-    const body = {
+    const data = {
       title: productTitle,
-      price: parseInt(price),
+      price: price,
       description: description,
       category: category,
-      images: files,
+      file: files,
     };
 
-    dispatch(addproduct(body)).then((res) => {
+    const config = {
+      Headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
+
+    dispatch(addproduct(data, config)).then((res) => {
       if (res.payload) {
         toast.success("등록 성공", {
           autoClose: 1500,
@@ -47,19 +55,6 @@ const AddDetailPage = (props) => {
           autoClose: 1500,
         });
       }
-    });
-  };
-
-  const handleClick = (e) => {
-    const formdata = new FormData();
-    formdata.append("images", files[0]);
-    const config = {
-      Headers: {
-        "content-type": "multipart/form-data",
-      },
-    };
-    dispatch(getimage(formdata, config)).then((res) => {
-      console.log(res);
     });
   };
 
@@ -113,7 +108,7 @@ const AddDetailPage = (props) => {
               thousandSeparator={true}
               type="text"
               value={price}
-              onChange={(e) => setPrice(e.target.value)}
+              onChange={(e) => setPrice(e.currentTarget.value)}
               placeholder="가격"
             />
 
@@ -125,9 +120,7 @@ const AddDetailPage = (props) => {
               placeholder="상품설명"
             />
 
-            <AddDetailButton type="submit" onClick={handleClick}>
-              등록하기
-            </AddDetailButton>
+            <AddDetailButton type="submit">등록하기</AddDetailButton>
           </AddDetialForm>
         </Innerbox>
       </AddDetailWrapper>
