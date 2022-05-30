@@ -45,7 +45,7 @@ const IsLink = styled(Link)`
   :visited {
     color: black;
     text-decoration: none;
-  }
+  } 
   :hover {
     color: black;
     text-decoration: underline;

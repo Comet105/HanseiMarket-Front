@@ -76,19 +76,4 @@ const Title = styled.div`
 
 const Banner = styled.div``;
 
-// const ListInput = styled.input`
-//   background-color: #eaeaea;
-//   margin-top: 1rem;
-//   margin-bottom: 1rem;
-//   color: #444444;
-//   border: 0;
-//   border-radius: 4px;
-//   font-size: 12px;
-//   width: 15rem;
-//   padding: 0.5rem 1rem 0.5rem 1rem;
-//   :focus {
-//     outline: 1px solid gray;
-//   }
-// `;
-
 export default RodingPage;
